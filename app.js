@@ -35,7 +35,10 @@ function searchByTraits(people) {
       filteredPeople = searchByEyeColor(people);
       displayPeople(filteredPeople);
       break;
-      // so on and so forth
+      case "occupation":
+      filteredPeople = searchByOccupation(people);
+      displayPeople(filteredPeople);
+      break;
     default:
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
@@ -48,6 +51,16 @@ function searchByTraits(people) {
 
 }
 
+function searchByOccupation(people){
+  let userInputOccupation = prompt("What is their occupation?").toLowerCase();
+  let newArray = people.filter(function(el){
+    if(el.occupation == userInputOccupation) {
+      return true;
+    }
+  })
+  return newArray;
+}
+
 function searchByEyeColor(people) {
   let userInputEyeColor = prompt("What color eyes does the person have?");
   let newArray = people.filter(function(el) {
@@ -58,7 +71,6 @@ function searchByEyeColor(people) {
 
   return newArray;
 }
-
 
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
