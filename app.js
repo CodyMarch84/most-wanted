@@ -44,22 +44,39 @@ function searchByTraits(people) {
       filteredPeople = searchByOccupation(people);
       displayPeople(filteredPeople);
       break;
+    case "age":
+      convertAge(people);
+      // filteredPeople = searchByAge(people);
+      // displayPeople(filteredPeople);
+      break;
     default:
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
       break;
   }
 
-  let foundPerson = filteredPeople[0];
+  // let foundPerson = filteredPeople[0];
 
-  mainMenu(foundPerson, people);
+  // mainMenu(foundPerson, people);
 
 }
 
-function searchByOccupation(people){
+function convertAge(people) {
+  let realAge = people.filter(function(el) {
+    let today = new Date();
+    let age = Date.parse(today) - Date.parse(el.dob);
+    let msPerYear = 31556952000;
+    let calculatedAge = Math.floor(age / msPerYear);
+    console.log(calculatedAge);
+  })
+
+
+}
+
+function searchByOccupation(people) {
   let userInputOccupation = prompt("What is their occupation?").toLowerCase();
-  let newArray = people.filter(function(el){
-    if(el.occupation == userInputOccupation) {
+  let newArray = people.filter(function(el) {
+    if (el.occupation == userInputOccupation) {
       return true;
     }
   })
