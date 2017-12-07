@@ -35,6 +35,9 @@ function searchByTraits(people) {
       filteredPeople = searchByEyeColor(people);
       displayPeople(filteredPeople);
       break;
+    case "gender":
+      filteredPeople = searchByGender(people);
+      displayPeople(filteredPeople);
       // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -83,7 +86,15 @@ function searchByHeight(people) {
   return newArray;
 }
 
-
+function searchByGender(people) {
+  let userInputGender = prompt("What gender is the person? ('male' or 'female')");
+  let newArray = people.filter(function(el) {
+    if (el.gender == userInputGender) {
+      return true;
+    }
+  });
+  return newArray;
+}
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
