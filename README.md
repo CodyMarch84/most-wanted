@@ -5,8 +5,6 @@ Most Wanted Assignment
 
 Most Wanted Assignment
 
->>>>>>> 2f5ec8cc0e21bdc247f1f2933b0df10500358dbc
-
 Read this entire README and ask any questions you have before starting to code.
 
 Before starting this project, read the instructions.pdf included in the repository!
@@ -54,8 +52,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-
-
-
