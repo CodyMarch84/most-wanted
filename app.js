@@ -30,6 +30,10 @@ function searchByTraits(people) {
     case "weight":
       filteredPeople = searchByWeight(people);
       break;
+    case "eye color":
+      filteredPeople = searchByEyeColor(people);
+      displayPeople(filteredPeople);
+      break;
       // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -42,6 +46,18 @@ function searchByTraits(people) {
   mainMenu(foundPerson, people);
 
 }
+
+function searchByEyeColor(people) {
+  let userInputEyeColor = prompt("What color eyes does the person have?");
+  let newArray = people.filter(function(el) {
+    if (el.eyeColor == userInputEyeColor) {
+      return true;
+    }
+  })
+
+  return newArray;
+}
+
 
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
@@ -76,7 +92,6 @@ function mainMenu(person, people) {
       // TODO: get person's family
       break;
     case "descendants":
-      checkForDescendants(person);
       // TODO: get person's descendants
       break;
     case "restart":
@@ -97,7 +112,7 @@ function searchByName(people) {
     if (firstName == data[i].firstName && lastName == data[i].lastName) {
       mainMenu(data[i]);
       // displayPerson(data[i]);
-    } 
+    }
   }
 }
 
@@ -126,40 +141,6 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
-function checkForDescendants(person) {
-  let allPeople = [];
-  let justParents = [];
-  let descendants = [];
- 
-  console.log(person.firstName + " " + person.lastName + " " + "ID: " + person.id);
-  
-  data.forEach(function(record){
-    allPeople.push(record);
-  })
-  console.log(allPeople);
-  
-  allPeople.forEach(function(parents){
-    justParents.push(parents.parents);
-  })
-  console.log(descendants);
-
-  justParents.forEach(function(val){
-    if (val.includes(person.id)){
-      descendants.push(val);
-    }
-  })
-  console.log(descendants);
-  searchById([descendants]);
-}
-
-function searchById(id){
-  for(i = 0; i <= data.length -1; i++){
-    if(data.includes(id)){
-      console.log(data.firstName);
-      console.log(data.lastName);
-    }
-  }
-}
 // function that prompts and validates user input
 function promptFor(question, valid) {
   do {
