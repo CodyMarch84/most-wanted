@@ -3,19 +3,19 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-function app(people){
+function app(people) {
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-  switch(searchType){
+  switch (searchType) {
     case 'yes':
-    searchByName();
-    break;
+      searchByName();
+      break;
     case 'no':
-    searchByTraits(people);
-    break;
+      searchByTraits(people);
+      break;
     default:
-    alert("Wrong! Please try again, following the instructions dummy. :)");
-    app(people); // restart app
-    break;
+      alert("Wrong! Please try again, following the instructions dummy. :)");
+      app(people); // restart app
+      break;
   }
 }
 
@@ -23,14 +23,14 @@ function searchByTraits(people) {
   let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
   let filteredPeople;
 
-  switch(userSearchChoice) {
+  switch (userSearchChoice) {
     case "height":
       filteredPeople = searchByHeight(people);
       break;
     case "weight":
       filteredPeople = searchByWeight(people);
       break;
-    // so on and so forth
+      // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
@@ -46,8 +46,8 @@ function searchByTraits(people) {
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
 
-  let newArray = people.filter(function (el) {
-    if(el.weight == userInputWeight) {
+  let newArray = people.filter(function(el) {
+    if (el.weight == userInputWeight) {
       return true;
     }
     // return true if el.height matches userInputHeight
@@ -57,61 +57,58 @@ function searchByWeight(people) {
 }
 
 // Menu function to call once you find who you are looking for
-function mainMenu(person, people){
+function mainMenu(person, people) {
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  if(!person){
+  if (!person) {
     alert("Could not find that individual.");
     return app(people); // restart
   }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
-  switch(displayOption){
+  switch (displayOption) {
     case "info":
-    displayPerson(person);
-    break;
+      displayPerson(person);
+      break;
     case "family":
-    // TODO: get person's family
-    break;
+      // TODO: get person's family
+      break;
     case "descendants":
-    checkForDescendants(person);
-    // TODO: get person's descendants
-    break;
+      checkForDescendants(person);
+      // TODO: get person's descendants
+      break;
     case "restart":
-    app(people); // restart
-    break;
+      app(people); // restart
+      break;
     case "quit":
-    return; // stop execution
+      return; // stop execution
     default:
-    return mainMenu(person, people); // ask again
+      return mainMenu(person, people); // ask again
   }
 }
 
-function searchByName(people){
+function searchByName(people) {
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
 
-  for(i = 0; i <= data.length - 1; i++) {
-    if(firstName == data[i].firstName && lastName == data[i].lastName) {
+  for (i = 0; i <= data.length - 1; i++) {
+    if (firstName == data[i].firstName && lastName == data[i].lastName) {
       mainMenu(data[i]);
       // displayPerson(data[i]);
-    }
-    else {
-      console.log("Nothing.");
-    }
+    } 
   }
 }
 
 // alerts a list of people
-function displayPeople(people){
-  alert(people.map(function(person){
+function displayPeople(people) {
+  alert(people.map(function(person) {
     return person.firstName + " " + person.lastName;
   }).join("\n"));
 }
 
-function displayPerson(person){
+function displayPerson(person) {
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
@@ -129,29 +126,54 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-function checkForDescendants (person) {
-    var idCheck = person.id;
-    for(i = 0; i <= data.length -1; i++) {
-      if(idCheck === data[i].parents[i]) {
-        console.log("Found this " + data.id);
-      }
+function checkForDescendants(person) {
+  let allPeople = [];
+  let justParents = [];
+  let descendants = [];
+ 
+  console.log(person.firstName + " " + person.lastName + " " + "ID: " + person.id);
+  
+  data.forEach(function(record){
+    allPeople.push(record);
+  })
+  console.log(allPeople);
+  
+  allPeople.forEach(function(parents){
+    justParents.push(parents.parents);
+  })
+  console.log(descendants);
+
+  justParents.forEach(function(val){
+    if (val.includes(person.id)){
+      descendants.push(val);
     }
+  })
+  console.log(descendants);
+  searchById([descendants]);
 }
 
+function searchById(id){
+  for(i = 0; i <= data.length -1; i++){
+    if(data.includes(id)){
+      console.log(data.firstName);
+      console.log(data.lastName);
+    }
+  }
+}
 // function that prompts and validates user input
-function promptFor(question, valid){
-  do{
+function promptFor(question, valid) {
+  do {
     var response = prompt(question).trim();
-  } while(!response || !valid(response));
+  } while (!response || !valid(response));
   return response;
 }
 
 // helper function to pass into promptFor to validate yes/no answers
-function yesNo(input){
+function yesNo(input) {
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
 // helper function to pass in as default promptFor validation
-function chars(input){
+function chars(input) {
   return true; // default validation only
 }
