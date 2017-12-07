@@ -76,6 +76,7 @@ function mainMenu(person, people){
     // TODO: get person's family
     break;
     case "descendants":
+    checkForDescendants(person);
     // TODO: get person's descendants
     break;
     case "restart":
@@ -115,7 +116,7 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo += "ID: " + person.id + "\n" + "\n";  
+  personInfo += "ID: " + person.id + "\n" + "\n";
   personInfo += "Gender: " + person.gender + "\n";
   personInfo += "DOB: " + person.dob + "\n";
   personInfo += "Height: " + person.height + "\n";
@@ -126,6 +127,15 @@ function displayPerson(person){
   personInfo += "Current Spouse: " + person.currentSpouse + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
+}
+
+function checkForDescendants (person) {
+    var idCheck = person.id;
+    for(i = 0; i <= data.length -1; i++) {
+      if(idCheck === data[i].parents[i]) {
+        console.log("Found this " + data.id);
+      }
+    }
 }
 
 // function that prompts and validates user input
