@@ -30,6 +30,7 @@ function searchByTraits(people) {
       break;
     case "weight":
       filteredPeople = searchByWeight(people);
+      displayPeople(filteredPeople);
       break;
     case "eye color":
       filteredPeople = searchByEyeColor(people);
@@ -101,7 +102,6 @@ function searchByWeight(people) {
     if (el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.height matches userInputHeight
   });
 
   return newArray;
