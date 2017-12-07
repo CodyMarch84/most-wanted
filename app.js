@@ -118,7 +118,7 @@ function searchByHeight(people) {
 }
 
 function searchByGender(people) {
-  let userInputGender = prompt("What gender is the person? ('male' or 'female')");
+  let userInputGender = prompt("What gender is the person? ('male' or 'female')").toLowerCase();
   let newArray = people.filter(function(el) {
     if (el.gender == userInputGender) {
       return true;
