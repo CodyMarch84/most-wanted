@@ -26,6 +26,7 @@ function searchByTraits(people) {
   switch (userSearchChoice) {
     case "height":
       filteredPeople = searchByHeight(people);
+      displayPeople(filteredPeople);
       break;
     case "weight":
       filteredPeople = searchByWeight(people);
@@ -55,6 +56,18 @@ function searchByWeight(people) {
 
   return newArray;
 }
+
+function searchByHeight(people) {
+  let userInputHeight = prompt("How tall is the person in inches?");
+  let newArray = people.filter(function(el) {
+    if (el.height == userInputHeight) {
+      return true;
+    }
+  });
+  return newArray;
+}
+
+
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
@@ -97,7 +110,7 @@ function searchByName(people) {
     if (firstName == data[i].firstName && lastName == data[i].lastName) {
       mainMenu(data[i]);
       // displayPerson(data[i]);
-    } 
+    }
   }
 }
 
@@ -130,14 +143,14 @@ function checkForDescendants(person) {
   let allPeople = [];
   let justParents = [];
   let descendants = [];
- 
+
   console.log(person.firstName + " " + person.lastName + " " + "ID: " + person.id);
-  
+
   data.forEach(function(record){
     allPeople.push(record);
   })
   console.log(allPeople);
-  
+
   allPeople.forEach(function(parents){
     justParents.push(parents.parents);
   })
