@@ -45,7 +45,8 @@ function searchByTraits(people) {
       displayPeople(filteredPeople);
       break;
     case "age":
-      convertAge(people);
+      let changeAge = convertAge(people);
+      addAgeToUser(people, changeAge);
       // filteredPeople = searchByAge(people);
       // displayPeople(filteredPeople);
       break;
@@ -69,8 +70,14 @@ function convertAge(people) {
     let calculatedAge = Math.floor(age / msPerYear);
     console.log(calculatedAge);
   })
+  return realAge;
+}
 
-
+function addAgeToUser(people, changeAge){
+ let newArray = people.map(function(el){
+  el + changeAge;
+ })
+ return newArray;
 }
 
 function searchByOccupation(people) {
