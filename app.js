@@ -92,15 +92,14 @@ function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
 
-  for(i = 0; i <= data.length; i++) {
+  for(i = 0; i <= data.length - 1; i++) {
     if(firstName == data[i].firstName && lastName == data[i].lastName) {
-      console.log(data[i]);
+      alert(data[i]);
     }
     else {
       console.log("Nothing.");
     }
   }
-
 }
 
 // alerts a list of people
