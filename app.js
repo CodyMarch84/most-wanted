@@ -70,7 +70,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    displayPerson(person);
     break;
     case "family":
     // TODO: get person's family
@@ -94,7 +94,8 @@ function searchByName(people){
 
   for(i = 0; i <= data.length - 1; i++) {
     if(firstName == data[i].firstName && lastName == data[i].lastName) {
-      displayPerson(data[i]);
+      mainMenu(data[i]);
+      // displayPerson(data[i]);
     }
     else {
       console.log("Nothing.");
