@@ -25,7 +25,7 @@ Page
 5.  Search by occupation alone
 6.  Search by height alone
 7.  Search by name case sensitivity
-8.
+8.  When a list of multiple names is returned, it displays it and then shows each record individually, but you can skip the record if you don't want to view it
 9.
 10.
 11.

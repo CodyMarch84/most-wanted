@@ -10,29 +10,27 @@ function app(people) {
       searchByName();
       break;
     case 'no':
-    var singleSearch = promptFor("Do you want to search by multiple characteristics?\n\nEntering NO will let you serach by ONE trait.\nEntering YES will let you serach by multiple traits.\n\nEnter 'yes' or 'no", yesNo).toLowerCase();
+      var singleSearch = promptFor("Do you want to search by multiple characteristics?\n\nEntering NO will let you serach by ONE trait.\nEntering YES will let you serach by multiple traits.\n\nEnter 'yes' or 'no", yesNo).toLowerCase();
       switch (singleSearch) {
         case 'yes':
-        serachByMultipleTraits(people);
-        break;
+          serachByMultipleTraits(people);
+          break;
         case 'no':
-        searchByTrait(people);
-        break;
+          searchByTrait(people);
+          break;
         default:
-        alert("Please enter yes or no");
-        break;
+          alert("Please enter yes or no");
+          break;
       }
   }
 }
 
-function serachByMultipleTraits(people){
+function serachByMultipleTraits(people) {
   let userSearchChoice = prompt("MULTIPLE SEARCH!! \nWhich would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
   let splitUserChoice = userSearchChoice.replace(/,/g, '').split(" ");
-  console.log(splitUserChoice);
-  for (i=0; i<= splitUserChoice.length-1; i++){
+  for (i = 0; i <= splitUserChoice.length - 1; i++) {
     console.log(splitUserChoice[i]);
   }
-  
 }
 
 function searchByTrait(people) {
@@ -70,10 +68,10 @@ function searchByTrait(people) {
       break;
   }
 
-  // let foundPerson = filteredPeople[0];
-
-  // mainMenu(foundPerson, people);
-
+  for (i = 0; i <= filteredPeople.length - 1; i++) {
+    let foundPerson = filteredPeople[i];
+    mainMenu(foundPerson, people);
+  }
 }
 
 
@@ -159,7 +157,7 @@ function mainMenu(person, people) {
     return app(people); // restart
   }
 
-  var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'\n\n Type 'next' to skip to the next record...");
 
   switch (displayOption) {
     case "info":
@@ -175,7 +173,9 @@ function mainMenu(person, people) {
       app(people); // restart
       break;
     case "quit":
-      return; // stop execution
+      return;
+    case "next":
+      break; // stop execution
     default:
       return mainMenu(person, people); // ask again
   }
