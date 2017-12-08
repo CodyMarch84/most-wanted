@@ -30,6 +30,7 @@ function searchByTraits(people) {
       break;
     case "weight":
       filteredPeople = searchByWeight(people);
+      displayPeople(filteredPeople);
       break;
     case "eye color":
       filteredPeople = searchByEyeColor(people);
@@ -45,9 +46,8 @@ function searchByTraits(people) {
       displayPeople(filteredPeople);
       break;
     case "age":
-      convertAge(people);
-      // filteredPeople = searchByAge(people);
-      // displayPeople(filteredPeople);
+      filteredPeople = searchByAge(people);
+      displayPeople(filteredPeople);
       break;
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -61,8 +61,10 @@ function searchByTraits(people) {
 
 }
 
-function convertAge(people) {
-  let realAge = people.filter(function(el) {
+
+function searchByAge(people) {
+  let userInputAge = prompt("What is the age of the person?");
+  let newArray = people.filter(function(el) {
     let today = new Date();
     let age = Date.parse(today) - Date.parse(el.dob);
     let msPerYear = 31556952000;
@@ -71,6 +73,15 @@ function convertAge(people) {
   });
 
   return realAge;
+    el.age = calculatedAge;
+    console.log(el.age);
+    if (calculatedAge == userInputAge) {
+      console.log("calculated " + el.age);
+      console.log("input " + userInputAge);
+      return true;
+    }
+  })
+  return newArray;
 }
 
 function searchByOccupation(people) {
@@ -101,7 +112,6 @@ function searchByWeight(people) {
     if (el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.height matches userInputHeight
   });
 
   return newArray;
