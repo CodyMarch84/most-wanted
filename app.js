@@ -10,7 +10,7 @@ function app(people) {
       searchByName();
       break;
     case 'no':
-    var singleSearch = promptFor("Do you want to search by multiple characteristics? Entering NO will let you serach by ONE trait. Enter 'yes' or 'no", yesNo).toLowerCase();
+    var singleSearch = promptFor("Do you want to search by multiple characteristics?\n\nEntering NO will let you serach by ONE trait.\nEntering YES will let you serach by multiple traits.\n\nEnter 'yes' or 'no", yesNo).toLowerCase();
       switch (singleSearch) {
         case 'yes':
         serachByMultipleTraits(people);
@@ -26,6 +26,12 @@ function app(people) {
 }
 
 function serachByMultipleTraits(people){
+  let userSearchChoice = prompt("MULTIPLE SEARCH!! \nWhich would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
+  let splitUserChoice = userSearchChoice.replace(/,/g, '').split(" ");
+  console.log(splitUserChoice);
+  for (i=0; i<= splitUserChoice.length-1; i++){
+    console.log(splitUserChoice[i]);
+  }
   
 }
 
@@ -60,7 +66,7 @@ function searchByTrait(people) {
       break;
     default:
       alert("You entered an invalid search type! Please try again.");
-      searchByTraits(people);
+      searchByTrait(people);
       break;
   }
 
