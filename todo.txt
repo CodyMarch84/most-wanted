@@ -10,7 +10,9 @@ Page
 
 4. Get UI to flow the way you would expect it to
 
-5. LAST - remove any unused files, comments annd console.logs from code (Next Tuesday)
+5. quit wont quit after you display info sometimes
+
+6. LAST - remove any unused files, comments annd console.logs from code (Next Tuesday)
 
 
 
