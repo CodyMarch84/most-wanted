@@ -74,7 +74,6 @@ function searchByTrait(people) {
   }
 }
 
-
   function searchByAge(people) {
     let userInputAge = prompt("What is the age of the person?");
     let newArray = people.filter(function(el) {
@@ -82,12 +81,8 @@ function searchByTrait(people) {
       let age = Date.parse(today) - Date.parse(el.dob);
       let msPerYear = 31556952000;
       let calculatedAge = Math.floor(age / msPerYear);
-      console.log(calculatedAge);
       el.age = calculatedAge;
-      console.log(el.age);
       if (calculatedAge == userInputAge) {
-        console.log("calculated " + el.age);
-        console.log("input " + userInputAge);
         return true;
       }
     });
