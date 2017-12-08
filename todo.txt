@@ -1,8 +1,8 @@
 ************* TO DO ********************
 
 
-1. Get Descendants.  Build out the functionality for returning a person’s descendants. The user just needs the list of their full names. Descendants are limited to relatives ‘by blood’. Must use recursion. 
-Page 
+1. Get Descendants.  Build out the functionality for returning a person’s descendants. The user just needs the list of their full names. Descendants are limited to relatives ‘by blood’. Must use recursion.
+Page
 
 2. Get Family— Build out the functionality for returning a person’s immediate family. The user just needs the list of their full names. Immediate family includes a person’s parents, siblings, spouse (current only), and children. Must use iteration
 
@@ -10,18 +10,20 @@ Page
 
 4. Get UI to flow the way you would expect it to
 
-5. When you type in a name, right now the case matters, fix it so you can type in whatever and it gets converted
-
 
 
 
 
 *************** DONE *******************
 
-1. Search by name
-2. Search by age alone
-3. Search by eye color alone
-4. Search by weight alone
-5. Search by occupation alone
-6. Search by height alone
-7. 
+1.  Search by name
+2.  Search by age alone
+3.  Search by eye color alone
+4.  Search by weight alone
+5.  Search by occupation alone
+6.  Search by height alone
+7.  Search by name case sensitivity
+8.
+9.
+10.
+11.
