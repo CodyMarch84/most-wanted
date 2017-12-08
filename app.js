@@ -40,7 +40,6 @@ function searchByTraits(people) {
       filteredPeople = searchByGender(people);
       displayPeople(filteredPeople);
       break;
-      // so on and so forth
     case "occupation":
       filteredPeople = searchByOccupation(people);
       displayPeople(filteredPeople);
