@@ -157,7 +157,7 @@ function mainMenu(person, people) {
     return app(people); // restart
   }
 
-  var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'\n\n Type 'next' to skip to the next record...");
+  var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'quit' to quit and restart.\n\n Type 'next' to skip to the next record...");
 
   switch (displayOption) {
     case "info":
@@ -169,11 +169,9 @@ function mainMenu(person, people) {
     case "descendants":
       // TODO: get person's descendants
       break;
-    case "restart":
+    case "quit":
       app(people); // restart
       break;
-    case "quit":
-      return;
     case "next":
       break; // stop execution
     default:
