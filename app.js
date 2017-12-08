@@ -80,7 +80,7 @@ function searchByAge(people) {
       console.log("input " + userInputAge);
       return true;
     }
-  })
+  });
   return newArray;
 }
 
@@ -100,7 +100,7 @@ function searchByEyeColor(people) {
     if (el.eyeColor == userInputEyeColor) {
       return true;
     }
-  })
+  });
 
   return newArray;
 }
