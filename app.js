@@ -154,27 +154,30 @@ function mainMenu(person, people) {
   }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit' or 'n' for the next record.");
-  switch (displayOption) {
-    case "info":
-      displayPerson(person);
-      break;
-    case "family":
-      // TODO: get person's family
-      break;
-    case "descendants":
-      // TODO: get person's descendants
-      break;
-    case "restart":
-      app(people); // restart
-      break;
-    case "quit":
-      break;
-    case "n":
+
+    switch (displayOption) {
+      case "info":
+        displayPerson(person);
+        break;
+      case "family":
+        // TODO: get person's family
+        displayFamily(person, people);
+        break;
+      case "descendants":
+        // TODO: get person's descendants
+        break;
+      case "restart":
+        app(people); // restart
+        break;
+      case "quit":
+        return;
+      case "n":
       break; // stop execution
-    default:
-      return mainMenu(person, people); // ask again
+      default:
+        return mainMenu(person, people); // ask again
+    }
   }
-}
+
 
 
 function searchByName(people) {
@@ -190,11 +193,19 @@ function searchByName(people) {
 
 
 //   // alerts a list of people
+
 function displayPeople(people) {
   alert(people.map(function(person) {
     return person.firstName + " " + person.lastName;
   }).join("\n"));
 }
+
+  function displayPeople(people) {
+    alert(people.map(function(person) {
+      return person.firstName + " " + person.lastName;
+    }).join("\n"));
+  }
+
 
 // // "Immediate family includes a person’s parents, siblings, spouse(current only), and children. Must use iteration"
 
@@ -212,6 +223,7 @@ function displayFamily(person, people) {
   });
   return spouse;
 }
+
 
 
 function displayPerson(person) {
@@ -240,6 +252,38 @@ function promptFor(question, valid) {
   } while (!response || !valid(response));
   return response;
 }
+
+  function displayPerson(person) {
+    // print all of the information about a person:
+    // height, weight, age, name, occupation, eye color.
+    var personInfo = "First Name: " + person.firstName + "\n";
+    personInfo += "Last Name: " + person.lastName + "\n";
+    personInfo += "ID: " + person.id + "\n" + "\n";
+    personInfo += "Gender: " + person.gender + "\n";
+    personInfo += "DOB: " + person.dob + "\n";
+    personInfo += "Height: " + person.height + "\n";
+    personInfo += "Weight: " + person.weight + "\n";
+    personInfo += "Eye-color: " + person.eyeColor + "\n";
+    personInfo += "Occupation: " + person.occupation + "\n";
+    personInfo += "Parents: " + person.parents + "\n";
+    personInfo += "Current Spouse: " + person.currentSpouse + "\n";
+    // TODO: finish getting the rest of the information to display
+    alert(personInfo);
+  }
+
+  // function that prompts and validates user input
+  function promptFor(question, valid) {
+    do {
+      var response = prompt(question).trim();
+    } while (!response || !valid(response));
+    return response;
+  }
+//
+  // helper function to pass into promptFor to validate yes/no answers
+  function yesNo(input) {
+    return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+  }
+
 
 // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input) {
