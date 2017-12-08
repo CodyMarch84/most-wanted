@@ -13,7 +13,7 @@ function app(people) {
     var singleSearch = promptFor("Do you want to search by multiple characteristics? Entering NO will let you serach by ONE trait. Enter 'yes' or 'no", yesNo).toLowerCase();
       switch (singleSearch) {
         case 'yes':
-        alert('serching by multiple...');
+        serachByMultipleTraits(people);
         break;
         case 'no':
         searchByTrait(people);
@@ -23,6 +23,10 @@ function app(people) {
         break;
       }
   }
+}
+
+function serachByMultipleTraits(people){
+  
 }
 
 function searchByTrait(people) {
