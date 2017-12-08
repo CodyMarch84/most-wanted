@@ -46,9 +46,8 @@ function searchByTraits(people) {
       displayPeople(filteredPeople);
       break;
     case "age":
-      let changeAge = convertAge(people);
-      // filteredPeople = searchByAge(people);
-      // displayPeople(filteredPeople);
+      filteredPeople = searchByAge(people);
+      displayPeople(filteredPeople);
       break;
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -62,16 +61,23 @@ function searchByTraits(people) {
 
 }
 
-function convertAge(people) {
-    let realAge = people.filter(function(el) {
+
+function searchByAge(people) {
+  let userInputAge = prompt("What is the age of the person?");
+  let newArray = people.filter(function(el) {
     let today = new Date();
     let age = Date.parse(today) - Date.parse(el.dob);
     let msPerYear = 31556952000;
     let calculatedAge = Math.floor(age / msPerYear);
-    console.log(el.dob + " ------> " + calculatedAge);
+    el.age = calculatedAge;
+    console.log(el.age);
+    if (calculatedAge == userInputAge) {
+      console.log("calculated " + el.age);
+      console.log("input " + userInputAge);
+      return true;
+    }
   })
-
-   return realAge;
+  return newArray;
 }
 
 function searchByOccupation(people) {
