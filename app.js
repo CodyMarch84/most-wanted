@@ -10,16 +10,22 @@ function app(people) {
       searchByName();
       break;
     case 'no':
-      searchByTraits(people);
-      break;
-    default:
-      alert("Wrong! Please try again, following the instructions dummy. :)");
-      app(people); // restart app
-      break;
+    var singleSearch = promptFor("Do you want to search by multiple characteristics? Entering NO will let you serach by ONE trait. Enter 'yes' or 'no", yesNo).toLowerCase();
+      switch (singleSearch) {
+        case 'yes':
+        alert('serching by multiple...');
+        break;
+        case 'no':
+        searchByTrait(people);
+        break;
+        default:
+        alert("Please enter yes or no");
+        break;
+      }
   }
 }
 
-function searchByTraits(people) {
+function searchByTrait(people) {
   let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
   let filteredPeople;
 
