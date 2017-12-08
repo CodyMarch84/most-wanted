@@ -68,9 +68,9 @@ function convertAge(people) {
     let msPerYear = 31556952000;
     let calculatedAge = Math.floor(age / msPerYear);
     console.log(calculatedAge);
-  })
+  });
 
-
+  return realAge;
 }
 
 function searchByOccupation(people) {
