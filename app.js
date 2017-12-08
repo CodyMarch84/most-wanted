@@ -78,6 +78,7 @@ function searchByAge(people) {
     let age = Date.parse(today) - Date.parse(el.dob);
     let msPerYear = 31556952000;
     let calculatedAge = Math.floor(age / msPerYear);
+    console.log(calculatedAge);
     el.age = calculatedAge;
     console.log(el.age);
     if (calculatedAge == userInputAge) {
@@ -85,7 +86,7 @@ function searchByAge(people) {
       console.log("input " + userInputAge);
       return true;
     }
-  })
+  });
   return newArray;
 }
 
@@ -105,7 +106,7 @@ function searchByEyeColor(people) {
     if (el.eyeColor == userInputEyeColor) {
       return true;
     }
-  })
+  });
 
   return newArray;
 }
@@ -175,16 +176,17 @@ function mainMenu(person, people) {
 }
 
 function searchByName(people) {
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
+  var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
+  var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
 
   for (i = 0; i <= data.length - 1; i++) {
-    if (firstName == data[i].firstName && lastName == data[i].lastName) {
+    if (firstName == data[i].firstName.toLowerCase() && lastName == data[i].lastName.toLowerCase()) {
       mainMenu(data[i]);
       // displayPerson(data[i]);
     }
   }
 }
+
 
 // alerts a list of people
 function displayPeople(people) {
