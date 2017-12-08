@@ -28,6 +28,7 @@ function app(people) {
 function serachByMultipleTraits(people) {
   let userSearchChoice = prompt("MULTIPLE SEARCH!! \nWhich would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
   let splitUserChoice = userSearchChoice.replace(/,/g, '').split(" ");
+
   for (i = 0; i <= splitUserChoice.length - 1; i++) {
     console.log(splitUserChoice[i]);
   }
