@@ -15,11 +15,7 @@ function app(people) {
         case 'yes':
           let filteredPeople = serachByMultipleTraits(people);
           let uniqueUsers = findDuplicateUser(filteredPeople);
-          displayPeople(uniqueUsers);
-          for (i = 0; i <= uniqueUsers.length - 1; i++) {
-            let foundPerson = uniqueUsers[i];
-            mainMenu(foundPerson, people);
-          }
+          checkIfMultipleUsersAreEmpty(uniqueUsers, people);
           break;
         case 'no':
           searchByTrait(people);
@@ -85,11 +81,15 @@ function findDuplicateUser(names) {
   return result;
 }
 
-function checkIfMultipleUsersAreEmpty(users) {
+function checkIfMultipleUsersAreEmpty(users, people) {
   if (users.length <= 0) {
     alert("No Matches Found!");
   } else {
-    alert(users.join("\n"));
+    displayPeople(users);
+    for (i = 0; i <= users.length - 1; i++) {
+      let foundPerson = users[i];
+      mainMenu(foundPerson, people);
+    }
   }
 }
 

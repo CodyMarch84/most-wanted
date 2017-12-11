@@ -4,21 +4,10 @@
 1. Get Descendants.  Build out the functionality for returning a person’s descendants. The user just needs the list of their full names. Descendants are limited to relatives ‘by blood’. Must use recursion.
 Page
 
-2. Be able to search multiple characteristics at a time (ie age and eye color // height and weight)
+2. Get UI to flow the way you would expect it to
 
-<<<<<<< HEAD
+3. LAST - remove any unused files, comments and console.logs from code (Next Tuesday)
 
-
-4. Get UI to flow the way you would expect it to
-
-5. quit wont quit after you display info sometimes
-
-6. LAST - remove any unused files, comments annd console.logs from code (Next Tuesday)
-=======
-3. Get UI to flow the way you would expect it to
-
-4. LAST - remove any unused files, comments and console.logs from code (Next Tuesday)
->>>>>>> 9c1007eca1bbb50228c23152ef040f743571e0ae
 
 
 
@@ -34,10 +23,6 @@ Page
 6.  Search by height alone
 7.  Search by name case sensitivity
 8.  When a list of multiple names is returned, it displays it and then shows each record individually, but you can skip the record if you don't want to view it
-<<<<<<< HEAD
-9. Be able to search multiple characteristics at a time (ie age and eye color // height and weight)
-10.
-11.
-=======
-9.  Get Family— Build out the functionality for returning a person’s immediate family. The user just needs the list of their full names. Immediate family includes a person’s parents, siblings, spouse (current only), and children. Must use iteration.
->>>>>>> 9c1007eca1bbb50228c23152ef040f743571e0ae
+9.  Be able to search multiple characteristics at a time (ie age and eye color // height and weight)
+10.  Get Family— Build out the functionality for returning a person’s immediate family. The user just needs the list of their full names. Immediate family includes a person’s parents, siblings, spouse (current only), and children. Must use iteration.
+
