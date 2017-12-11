@@ -26,50 +26,67 @@ function app(people) {
 }
 
 function serachByMultipleTraits(people) {
-  let userSearchChoice = prompt("Which would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
+  let userSearchChoice = prompt("Which would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eyecolor', 'gender', 'age', 'occupation'.");
   let splitUserChoice = userSearchChoice.replace(/,/g, '').split(" ");
   console.log(splitUserChoice);
   let i = 0;
-  let compiledUsers =[];
+  let compiledUsers = [];
+  let filteredPeople;
 
-  while(splitUserChoice[i]){
-    if (splitUserChoice[i] === "height"){
+  while (splitUserChoice[i]) {
+    if (splitUserChoice[i] === "height") {
       let userHeights = searchByHeight(people);
       console.log(userHeights);
       compiledUsers.push(userHeights);
       i++;
-    }else if(splitUserChoice[i] === "weight"){
+    } else if (splitUserChoice[i] === "weight") {
       let userWeights = searchByWeight(people);
       console.log(userWeights);
       compiledUsers.push(userWeights);
       i++;
-    }else if(splitUserChoice[i] === "eye color"){
+    } else if (splitUserChoice[i] === "eyecolor") {
       let userEyeColor = searchByEyeColor(people);
       console.log(userEyeColor);
       compiledUsers.push(userEyeColor);
       i++
-    }else if(splitUserChoice[i] === "gender"){
+    } else if (splitUserChoice[i] === "gender") {
       let userGender = searchByGender(people);
       console.log(userGender);
       compiledUsers.push(userGender);
       i++
-    }else if(splitUserChoice[i] === "age"){
+    } else if (splitUserChoice[i] === "age") {
       let userAge = searchByAge(people);
       console.log(userAge);
       compiledUsers.push(userAge);
       i++;
-    }else if(splitUserChoice[i] === "occupatiuon"){
+    } else if (splitUserChoice[i] === "occupation") {
       let userOccupation = searchByOccupation(people);
       console.log(userOccupation);
       compiledUsers.push(userOccupation);
       i++
     }
   }
-  console.log(compiledUsers);
   let mergedUsers = [].concat.apply([], compiledUsers);
   console.log(mergedUsers);
-  return mergedUsers;
+  let names = [];
+  mergedUsers.forEach(function(val){
+    names.push(val.firstName + " " + val.lastName);
+  });
+  console.log(names);
+  // return names;
+  let result = [];
+
+  names.forEach(function(element, index){
+    if(names.indexOf(element, index + 1) > -1){
+      if (result.indexOf(element) === -1){
+        result.push(element);
+      }
+    }
+  });
+  console.log(result);
+  return result;
 }
+
 
 function searchByTrait(people) {
   let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
