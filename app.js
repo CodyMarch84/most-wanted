@@ -1,4 +1,3 @@
-
 function app(people) {
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let filteredPeople;
@@ -201,7 +200,7 @@ function searchByGender(people) {
 function mainMenu(person, people) {
   if (!person) {
     alert("Could not find that individual.");
-    return app(people); 
+    return app(people);
   }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit' or 'n' for the next record.");
@@ -214,17 +213,17 @@ function mainMenu(person, people) {
       displayFamily(person, people);
       break;
     case "descendants":
-    
+      displayDescendants(person, people);
       break;
     case "restart":
-      app(people); 
+      app(people);
       break;
     case "quit":
       return;
     case "n":
-      break; 
+      break;
     default:
-      return mainMenu(person, people); 
+      return mainMenu(person, people);
   }
 }
 
@@ -245,12 +244,16 @@ function displayPeople(people) {
   }).join("\n"));
 }
 
+function displayDescendants(person, people) {
+
+}
+
 function displayFamily(person, people) {
   let spouse = getSpouse(person, people);
   let parents = getParents(person, people);
   let children = getChildren(person, people);
   let siblings = getSiblings(person, people);
-  let family; 
+  let family;
   family = spouse.concat(parents);
   family = family.concat(children);
   family = family.concat(siblings);
