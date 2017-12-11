@@ -13,7 +13,9 @@ function app(people) {
       var singleSearch = promptFor("Do you want to search by multiple characteristics?\n\nEntering NO will let you serach by ONE trait.\nEntering YES will let you serach by Multiple traits.\n\nEnter 'yes' or 'no", yesNo).toLowerCase();
       switch (singleSearch) {
         case 'yes':
-          serachByMultipleTraits(people);
+        let filteredPeople;
+          filteredPeople = serachByMultipleTraits(people);
+          alert(filteredPeople.join("\n"));
           break;
         case 'no':
           searchByTrait(people);
@@ -257,13 +259,6 @@ function displayPeople(people) {
   }).join("\n"));
 }
 
-function displayPeople(people) {
-  alert(people.map(function(person) {
-    return person.firstName + " " + person.lastName;
-  }).join("\n"));
-}
-
-
 // // "Immediate family includes a person’s parents, siblings, spouse(current only), and children. Must use iteration"
 
 
@@ -279,35 +274,6 @@ function displayFamily(person, people) {
     }
   });
   return spouse;
-}
-
-
-
-function displayPerson(person) {
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
-  var personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo += "ID: " + person.id + "\n" + "\n";
-  personInfo += "Gender: " + person.gender + "\n";
-  personInfo += "DOB: " + person.dob + "\n";
-  personInfo += "Height: " + person.height + "\n";
-  personInfo += "Weight: " + person.weight + "\n";
-  personInfo += "Eye-color: " + person.eyeColor + "\n";
-  personInfo += "Occupation: " + person.occupation + "\n";
-  personInfo += "Parents: " + person.parents + "\n";
-  personInfo += "Current Spouse: " + person.currentSpouse + "\n";
-  // TODO: finish getting the rest of the information to display
-  alert(personInfo);
-}
-
-
-//   // function that prompts and validates user input
-function promptFor(question, valid) {
-  do {
-    var response = prompt(question).trim();
-  } while (!response || !valid(response));
-  return response;
 }
 
 function displayPerson(person) {
@@ -335,7 +301,7 @@ function promptFor(question, valid) {
   } while (!response || !valid(response));
   return response;
 }
-//
+
 // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input) {
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
