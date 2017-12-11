@@ -15,7 +15,7 @@ function app(people) {
         case 'yes':
           let filteredPeople;
           filteredPeople = serachByMultipleTraits(people);
-          alert(filteredPeople.join("\n"));
+          checkIfMultipleUsersAreEmpty(filteredPeople);
           break;
         case 'no':
           searchByTrait(people);
@@ -27,8 +27,16 @@ function app(people) {
   }
 }
 
+function checkIfMultipleUsersAreEmpty(users) {
+  if (users.length <= 0) {
+    alert("No Matches Found!");
+  } else {
+    alert(users.join("\n"));
+  }
+}
+
 function serachByMultipleTraits(people) {
-  let userSearchChoice = prompt("Which would you like to serach by? \n\n ie: Enter: height, weight, gender.... \n Choose from the following ---------->\n'height', 'weight', 'eyecolor', 'gender', 'age', 'occupation'.");
+  let userSearchChoice = prompt("Which would you like to serach by? \n\n Please type two or more of the following separated by a space.\n'height', 'weight', 'eyecolor', 'gender', 'age', 'occupation'.");
   let splitUserChoice = userSearchChoice.replace(/,/g, '').split(" ");
   let i = 0;
   let compiledUsers = [];
@@ -71,17 +79,17 @@ function serachByMultipleTraits(people) {
   return finalTally;
 }
 
-  function findDuplicateUser(names) {
-    let result = [];
-    names.forEach(function(element, index) {
-      if (names.indexOf(element, index + 1) > -1) {
-        if (result.indexOf(element) === -1) {
-          result.push(element);
-        }
+function findDuplicateUser(names) {
+  let result = [];
+  names.forEach(function(element, index) {
+    if (names.indexOf(element, index + 1) > -1) {
+      if (result.indexOf(element) === -1) {
+        result.push(element);
       }
-    });
-    return result;
-  }
+    }
+  });
+  return result;
+}
 
 function searchByTrait(people) {
   let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");

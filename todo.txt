@@ -6,7 +6,7 @@ Page
 
 2. Get Family— Build out the functionality for returning a person’s immediate family. The user just needs the list of their full names. Immediate family includes a person’s parents, siblings, spouse (current only), and children. Must use iteration
 
-3. Be able to search multiple characteristics at a time (ie age and eye color // height and weight)
+
 
 4. Get UI to flow the way you would expect it to
 
@@ -28,6 +28,6 @@ Page
 6.  Search by height alone
 7.  Search by name case sensitivity
 8.  When a list of multiple names is returned, it displays it and then shows each record individually, but you can skip the record if you don't want to view it
-9.
+9. Be able to search multiple characteristics at a time (ie age and eye color // height and weight)
 10.
 11.
