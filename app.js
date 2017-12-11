@@ -1,6 +1,4 @@
-/*
-Build all of your functions for displaying and gathering information below (GUI).
-*/
+
 
 function app(people) {
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
@@ -200,7 +198,6 @@ function searchByGender(people) {
   return newArray;
 }
 
-
 function mainMenu(person, people) {
   if (!person) {
     alert("Could not find that individual.");
@@ -221,27 +218,26 @@ function mainMenu(person, people) {
       // TODO: get person's descendants
       break;
     case "restart":
-      app(people); // restart
+      app(people);
       break;
     case "quit":
       return;
     case "n":
-      break; // stop execution
+      break;
     default:
-      return mainMenu(person, people); // ask again
+      return mainMenu(person, people);
   }
 }
 
 function searchByName(people) {
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
   var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
-
-  for (i = 0; i <= people.length - 1; i++) {
-    if (firstName == people[i].firstName.toLowerCase() && lastName == people[i].lastName.toLowerCase()) {
-      mainMenu(people[i], people);
-      // displayPerson(data[i]);
-    }
-  }
+    let newArray = people.filter(function(el) {
+      if (firstName == el.firstName.toLowerCase() && lastName == el.lastName.toLowerCase()){
+        return true;
+      }
+    });
+      mainMenu(newArray[0], people);
 }
 
 function displayPeople(people) {
@@ -255,12 +251,15 @@ function displayFamily(person, people) {
   let parents = getParents(person, people);
   let children = getChildren(person, people);
   let siblings = getSiblings(person, people);
-  let family; // = combine 'spouse', 'parents', 'children'
-  // look into arr.concat(arr2)
-  family = spouse.concat(parents);
-  family = family.concat(children);
-  family = family.concat(siblings);
-  displayPeople(family);
+  let family;
+    family = spouse.concat(parents);
+    family = family.concat(children);
+    family = family.concat(siblings);
+    displayPeople(family);
+    for (i = 0; i <= family.length - 1; i++) {
+      let foundPerson = family[i];
+      mainMenu(foundPerson, people);
+    }
 }
 
 function getSpouse(person, people) {
@@ -278,6 +277,7 @@ function getParents(person, people) {
       return person.firstName + " " + person.lastName;
     }
   });
+  console.log(parents);
   return parents;
 }
 
