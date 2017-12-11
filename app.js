@@ -164,7 +164,7 @@ function searchByTrait(people) {
         break;
       case "family":
         // TODO: get person's family
-        alert(displayFamily(person, people));
+        displayFamily(person, people);
         break;
       case "descendants":
         // TODO: get person's descendants
@@ -209,16 +209,17 @@ function searchByTrait(people) {
 function displayFamily(person, people) {
   let spouse = getSpouse(person, people);
   let parents = getParents(person, people);
-  // let children = getChildren(person, people);
-  // let siblings = getSiblings();
+  let children = getChildren(person, people);
+  let siblings = getSiblings(person, people);
   let family; // = combine 'spouse', 'parents', 'children'
   // look into arr.concat(arr2)
   family = spouse.concat(parents);
-  // family = family.concat(children);
-  // family = family.concat(siblings);
+  family = family.concat(children);
+  family = family.concat(siblings);
   displayPeople(family);
 }
 
+// displays the spouse
 function getSpouse(person, people) {
   let spouse = people.filter(function(el) {
     if(el.currentSpouse == person.id) {
@@ -227,6 +228,8 @@ function getSpouse(person, people) {
   });
   return spouse;
 }
+
+// displays the parents
 function getParents(person, people) {
   let parents = people.filter(function(el) {
     if(el.id == person.parents[0] || el.id == person.parents[1]) {
@@ -236,36 +239,27 @@ function getParents(person, people) {
   return parents;
 }
 
-// function getChildren() {
-//   let children = people.filter(function(el) {
-//     if() {
-//       return person.firstName + " " + person.lastName;
-//     }
-//   });
-//   return children;
-// }
+// displays any children
+function getChildren(person, people) {
+  let children = people.filter(function(el) {
+    for(let i = 0; i < el.parents.length; i++)
+      if(person.id === el.parents[i]) {
+        return el.firstName + " " + el.lastName;
+    }
+  });
+  return children;
+}
 
-
-// function displaySiblings(person, people) {
-// let siblings = people.filter(function(el) {
-//   if(el)
-// })
-//
-// }
-
-// function getSiblings(person, people) {
-//   let siblings = people.filter(function(el) {
-//     if(el.currentSpouse == person.id) {
-//
-//       return true;
-//     }
-//     else
-//     {
-//     return false;
-//     }
-//   });
-//   return siblings;
-// }
+// displays siblings
+function getSiblings(person, people) {
+let siblings = people.filter(function(el) {
+  for(let i = 0; i < person.parents.length; i++)
+    if((el.parents[i] === person.parents[i]) && (el.id != person.id)) {
+      return el.firstName + " " + el.lastName;
+    }
+  });
+  return siblings;
+}
 
   function displayPerson(person) {
     // print all of the information about a person:
