@@ -1,6 +1,3 @@
-/*
-Build all of your functions for displaying and gathering information below (GUI).
-*/
 
 function app(people) {
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
@@ -204,7 +201,7 @@ function searchByGender(people) {
 function mainMenu(person, people) {
   if (!person) {
     alert("Could not find that individual.");
-    return app(people); // restart
+    return app(people); 
   }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit' or 'n' for the next record.");
@@ -214,21 +211,20 @@ function mainMenu(person, people) {
       displayPerson(person);
       break;
     case "family":
-      // TODO: get person's family
       displayFamily(person, people);
       break;
     case "descendants":
-      // TODO: get person's descendants
+    
       break;
     case "restart":
-      app(people); // restart
+      app(people); 
       break;
     case "quit":
       return;
     case "n":
-      break; // stop execution
+      break; 
     default:
-      return mainMenu(person, people); // ask again
+      return mainMenu(person, people); 
   }
 }
 
@@ -239,7 +235,6 @@ function searchByName(people) {
   for (i = 0; i <= people.length - 1; i++) {
     if (firstName == people[i].firstName.toLowerCase() && lastName == people[i].lastName.toLowerCase()) {
       mainMenu(people[i], people);
-      // displayPerson(data[i]);
     }
   }
 }
@@ -255,8 +250,7 @@ function displayFamily(person, people) {
   let parents = getParents(person, people);
   let children = getChildren(person, people);
   let siblings = getSiblings(person, people);
-  let family; // = combine 'spouse', 'parents', 'children'
-  // look into arr.concat(arr2)
+  let family; 
   family = spouse.concat(parents);
   family = family.concat(children);
   family = family.concat(siblings);
@@ -313,7 +307,6 @@ function displayPerson(person) {
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parents: " + person.parents + "\n";
   personInfo += "Current Spouse: " + person.currentSpouse + "\n";
-  // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
