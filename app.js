@@ -230,12 +230,12 @@ function mainMenu(person, people) {
 function searchByName(people) {
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
   var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
-
-  for (i = 0; i <= people.length - 1; i++) {
-    if (firstName == people[i].firstName.toLowerCase() && lastName == people[i].lastName.toLowerCase()) {
-      mainMenu(people[i], people);
+  let newArray = people.filter(function(el) {
+    if (firstName == el.firstName.toLowerCase() && lastName == el.lastName.toLowerCase()) {
+      return true;
     }
-  }
+  });
+  mainMenu(newArray[0], people);
 }
 
 function displayPeople(people) {
@@ -258,6 +258,10 @@ function displayFamily(person, people) {
   family = family.concat(children);
   family = family.concat(siblings);
   displayPeople(family);
+  for (i = 0; i <= family.length - 1; i++) {
+    let foundPerson = family[i];
+    mainMenu(foundPerson, people);
+  }
 }
 
 function getSpouse(person, people) {
