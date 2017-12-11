@@ -72,6 +72,7 @@ function serachByMultipleTraits(people) {
 
   let mergedUsers = [].concat.apply([], compiledUsers);
   let names = [];
+  console.log(mergedUsers);
   mergedUsers.forEach(function(val) {
     names.push(val.firstName + " " + val.lastName);
   });
@@ -157,6 +158,7 @@ function searchByOccupation(people) {
 
   return newArray;
 }
+
 
 function searchByEyeColor(people) {
   let userInputEyeColor = prompt("What color eyes does the person have?");
@@ -261,17 +263,28 @@ function displayPeople(people) {
 }
 
 // // "Immediate family includes a person’s parents, siblings, spouse(current only), and children. Must use iteration"
-
+// function displayFamily(person, people) {
+//
+// }
 
 function displayFamily(person, people) {
-  console.log(person);
-  console.log(people);
+  let spouse = getSpouse(person, people);
+  let parents = getParents(person, people);
+  let children = getChildren(person, people);
+  let siblings = getSiblings(person, people);
+  let family; // = combine 'spouse', 'parents', 'children'
+  // look into arr.concat(arr2)
+  family = spouse.concat(parents);
+  family = family.concat(children);
+  family = family.concat(siblings);
+  displayPeople(family);
+}
+
+// displays the spouse
+function getSpouse(person, people) {
   let spouse = people.filter(function(el) {
-    if (el.currentSpouse == person.id) {
-      alert("Spouse: ");
-      return true;
-    } else {
-      return false;
+    if(el.currentSpouse == person.id) {
+      return person.firstName + " " + person.lastName;
     }
   });
   return spouse;
@@ -294,6 +307,56 @@ function displayPerson(person) {
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
+
+// displays the parents
+function getParents(person, people) {
+  let parents = people.filter(function(el) {
+    if(el.id == person.parents[0] || el.id == person.parents[1]) {
+      return person.firstName + " " + person.lastName;
+    }
+  });
+  return parents;
+}
+
+// displays any children
+function getChildren(person, people) {
+  let children = people.filter(function(el) {
+    for(let i = 0; i < el.parents.length; i++)
+      if(person.id === el.parents[i]) {
+        return el.firstName + " " + el.lastName;
+    }
+  });
+  return children;
+}
+
+// displays siblings
+function getSiblings(person, people) {
+let siblings = people.filter(function(el) {
+  for(let i = 0; i < person.parents.length; i++)
+    if((el.parents[i] === person.parents[i]) && (el.id != person.id)) {
+      return el.firstName + " " + el.lastName;
+    }
+  });
+  return siblings;
+}
+
+  function displayPerson(person) {
+    // print all of the information about a person:
+    // height, weight, age, name, occupation, eye color.
+    var personInfo = "First Name: " + person.firstName + "\n";
+    personInfo += "Last Name: " + person.lastName + "\n";
+    personInfo += "ID: " + person.id + "\n" + "\n";
+    personInfo += "Gender: " + person.gender + "\n";
+    personInfo += "DOB: " + person.dob + "\n";
+    personInfo += "Height: " + person.height + "\n";
+    personInfo += "Weight: " + person.weight + "\n";
+    personInfo += "Eye-color: " + person.eyeColor + "\n";
+    personInfo += "Occupation: " + person.occupation + "\n";
+    personInfo += "Parents: " + person.parents + "\n";
+    personInfo += "Current Spouse: " + person.currentSpouse + "\n";
+    // TODO: finish getting the rest of the information to display
+    alert(personInfo);
+  }
 
 // function that prompts and validates user input
 function promptFor(question, valid) {
