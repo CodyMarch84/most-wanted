@@ -72,7 +72,6 @@ function findDuplicateUser(names) {
       }
     }
   });
-  console.log(result);
   return result;
 }
 
