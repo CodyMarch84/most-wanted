@@ -60,7 +60,6 @@ function serachByMultipleTraits(people) {
 
   let mergedUsers = [].concat.apply([], compiledUsers);
   let names = [];
-  console.log(mergedUsers);
   return mergedUsers;
 }
 
@@ -248,7 +247,6 @@ function displayDescendants(person, people) {
   let result = [];
   let descendants = getChildren(person, people);
   descendants.forEach(function(val) {
-    console.log(val);
     result.push(val);
     let findChildren = getChildren(val, people);
     if (findChildren < 1) {
@@ -256,7 +254,6 @@ function displayDescendants(person, people) {
     }else{
       findChildren = findChildren.pop();
       result.push(findChildren);
-      console.log(result);
     }
   });
   displayPeople(result);
