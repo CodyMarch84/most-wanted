@@ -245,7 +245,21 @@ function displayPeople(people) {
 }
 
 function displayDescendants(person, people) {
-
+  let result = [];
+  let descendants = getChildren(person, people);
+  descendants.forEach(function(val) {
+    console.log(val);
+    result.push(val);
+    let x = getChildren(val, people);
+    if (x < 1) {
+      return false;
+    }else{
+      x = x.pop();
+      result.push(x);
+      console.log(result);
+    }
+  });
+  displayPeople(result);
 }
 
 function displayFamily(person, people) {
