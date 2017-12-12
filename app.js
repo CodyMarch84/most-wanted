@@ -250,12 +250,12 @@ function displayDescendants(person, people) {
   descendants.forEach(function(val) {
     console.log(val);
     result.push(val);
-    let x = getChildren(val, people);
-    if (x < 1) {
+    let findChildren = getChildren(val, people);
+    if (findChildren < 1) {
       return false;
     }else{
-      x = x.pop();
-      result.push(x);
+      findChildren = findChildren.pop();
+      result.push(findChildren);
       console.log(result);
     }
   });
