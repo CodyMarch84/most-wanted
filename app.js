@@ -1,5 +1,3 @@
-
-
 function app(people) {
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let filteredPeople;
@@ -62,7 +60,6 @@ function serachByMultipleTraits(people) {
 
   let mergedUsers = [].concat.apply([], compiledUsers);
   let names = [];
-  console.log(mergedUsers);
   return mergedUsers;
 }
 
@@ -198,10 +195,11 @@ function searchByGender(people) {
   return newArray;
 }
 
+
 function mainMenu(person, people) {
   if (!person) {
     alert("Could not find that individual.");
-    return app(people); // restart
+    return app(people);
   }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit' or 'n' for the next record.");
@@ -211,7 +209,6 @@ function mainMenu(person, people) {
       displayPerson(person);
       break;
     case "family":
-      // TODO: get person's family
       displayFamily(person, people);
       break;
     case "descendants":
@@ -234,12 +231,12 @@ function mainMenu(person, people) {
 function searchByName(people) {
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
   var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
-    let newArray = people.filter(function(el) {
-      if (firstName == el.firstName.toLowerCase() && lastName == el.lastName.toLowerCase()){
-        return true;
-      }
-    });
-      mainMenu(newArray[0], people);
+  let newArray = people.filter(function(el) {
+    if (firstName == el.firstName.toLowerCase() && lastName == el.lastName.toLowerCase()) {
+      return true;
+    }
+  });
+  mainMenu(newArray[0], people);
 }
 
 function displayPeople(people) {
@@ -254,14 +251,14 @@ function displayFamily(person, people) {
   let children = getChildren(person, people);
   let siblings = getSiblings(person, people);
   let family;
-    family = spouse.concat(parents);
-    family = family.concat(children);
-    family = family.concat(siblings);
-    displayPeople(family);
-    for (i = 0; i <= family.length - 1; i++) {
-      let foundPerson = family[i];
-      mainMenu(foundPerson, people);
-    }
+  family = spouse.concat(parents);
+  family = family.concat(children);
+  family = family.concat(siblings);
+  displayPeople(family);
+  for (i = 0; i <= family.length - 1; i++) {
+    let foundPerson = family[i];
+    mainMenu(foundPerson, people);
+  }
 }
 
 function getSpouse(person, people) {
@@ -279,7 +276,6 @@ function getParents(person, people) {
       return person.firstName + " " + person.lastName;
     }
   });
-  console.log(parents);
   return parents;
 }
 
@@ -324,7 +320,6 @@ function displayPerson(person) {
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parents: " + person.parents + "\n";
   personInfo += "Current Spouse: " + person.currentSpouse + "\n";
-  // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
