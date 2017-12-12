@@ -216,6 +216,8 @@ function mainMenu(person, people) {
       break;
     case "descendants":
       // TODO: get person's descendants
+      let descendants = findDescendants(person, people);
+      displayPeople(descendants);
       break;
     case "restart":
       app(people);
@@ -289,6 +291,15 @@ function getChildren(person, people) {
       }
   });
   return children;
+}
+
+function findDescendants(person, people) {
+  let descendants = getChildren(person, people);
+  for(let i = 0; i < descendants.length; i++) {
+    let result = findDescendants(descendants[i], people);
+    descendants = descendants.concat(result);
+  }
+  return descendants;
 }
 
 function getSiblings(person, people) {
